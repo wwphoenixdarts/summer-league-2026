@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>West Wickham Phoenix Darts Summer League 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #111111;
+      --surface: #1c1c1c;
+      --surface2: #252525;
+      --border: #2e2e2e;
+      --text: #ffffff;
+      --muted: #888888;
+      --accent: #9e9e9e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(17,17,17,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-brand {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: var(--surface2);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      transition: 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 56px; left: 0; right: 0;
+      background: rgba(17,17,17,0.98);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      z-index: 99;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mobile-menu a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      display: block;
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover { color: var(--text); }
+    .mobile-menu.open { display: flex; }
+
+    .hero {
+      padding: 120px 24px 64px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, #1a1a1a 0%, var(--bg) 100%);
+    }
+
+    .hero-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(48px, 10vw, 96px);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      line-height: 0.9;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .hero-title span { color: var(--muted); }
+
+    .hero-meta {
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+
+    .section-outer {
+      border-bottom: 1px solid var(--border);
+    }
+
+    section {
+      padding: 64px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text);
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .league-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .embed-wrapper {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .embed-wrapper iframe {
+      width: 100%;
+      border: none;
+      display: block;
+    }
+
+    .updates-grid { display: grid; gap: 16px; }
+
+    .update-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 24px;
+    }
+
+    .update-date {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .update-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .update-body {
+      font-size: 14px;
+      color: var(--accent);
+      line-height: 1.6;
+    }
+
+    .jump-links {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .jump-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888;
+      text-decoration: none;
+      background: #1c1c1c;
+      border: 1px solid #2e2e2e;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .jump-links a:hover {
+      color: #ffffff;
+      background: #2e2e2e;
+    }
+
+    footer {
+      padding: 32px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 1px;
+      font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero { padding: 90px 16px 48px; }
+      section { padding: 48px 16px; }
+      .two-col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-brand" href="#">Phoenix Darts</a>
+    <ul class="nav-links">
+      <li><a href="#updates">Updates</a></li>
+      <li><a href="#tables">League Tables</a></li>
+      <li><a href="#stats">Stats</a></li>
+      <li><a href="#fixtures">Fixtures & Results</a></li>
+      <li><a href="#teams">Teams</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#updates" onclick="closeMenu()">Updates</a>
+    <a href="#tables" onclick="closeMenu()">League Tables</a>
+    <a href="#stats" onclick="closeMenu()">Stats</a>
+    <a href="#fixtures" onclick="closeMenu()">Fixtures & Results</a>
+    <a href="#teams" onclick="closeMenu()">Teams & Contacts</a>
+  </div>
+
+  <div class="hero">
+    <div class="hero-label">West Wickham Phoenix Darts</div>
+    <h1 class="hero-title">Summer<br/><span>League</span><br/>2026</h1>
+    <div class="hero-meta">13 Teams &nbsp;·&nbsp; 2 Leagues &nbsp;·&nbsp; Season 2026</div>
+  </div>
+
+  <!-- UPDATES -->
+  <div class="section-outer">
+    <section id="updates">
+      <div class="section-label">Latest</div>
+      <div class="section-title">Updates</div>
+      <div class="updates-grid">
+        <div class="update-card">
+          <div class="update-date">18 May 2026</div>
+          <div class="update-title">Season Kicks Off 18th May 2026</div>
+          <div class="update-body">The West Wickham Phoenix Darts Summer League 2026 gets underway on 18th May with 13 teams split across League A and League B. Good luck to all teams!</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- LEAGUE TABLES -->
+  <div class="section-outer">
+    <section id="tables">
+      <div class="section-label">Standings</div>
+      <div class="section-title">League Tables</div>
+      <div class="two-col">
+        <div>
+          <div class="league-label">League A</div>
+          <div class="embed-wrapper">
+            <iframe
+              id="tableA"
+              src="https://script.google.com/macros/s/AKfycbw0aeQT3k6d6L3gkX-X4-TrJOu-WtTMDM39Q3Uhkz6R7RmziSjzAw0udMl-9Rq8xHU2MQ/exec"
+              height="340"
+              scrolling="no"
+            ></iframe>
+          </div>
+        </div>
+        <div>
+          <div class="league-label">League B</div>
+          <div class="embed-wrapper">
+            <iframe
+              id="tableB"
+              src="https://script.google.com/macros/s/AKfycbyfWPrNI06UTeooHhguMh1CmIDg56ANAyd-_vQm1tJVV8paGBjavVp7j5Wgn5Jt3j9VXw/exec"
+              height="380"
+              scrolling="no"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- STATS -->
+  <div class="section-outer">
+    <section id="stats">
+      <div class="section-label">Leaderboards</div>
+      <div class="section-title">Stats</div>
+      <div class="embed-wrapper">
+        <iframe
+          id="stats-iframe"
+          src="https://script.google.com/macros/s/AKfycbzXLAl8tCTDtBoQkEikmOaOLSU_RcJ5VFJEtVb0Md4Gk33uUIpVllFX4ewuZoTz8KMm/exec"
+          height="300"
+          scrolling="no"
+        ></iframe>
+      </div>
+    </section>
+  </div>
+
+  <!-- FIXTURES & RESULTS -->
+  <div class="section-outer">
+    <section id="fixtures">
+      <div class="section-label">Schedule</div>
+      <div class="section-title">Fixtures &amp; Results</div>
+      <div class="jump-links">
+        <a href="#fixturesAnchorA">↓ League A</a>
+        <a href="#fixturesAnchorB">↓ League B</a>
+      </div>
+      <div class="two-col">
+        <div>
+          <div class="league-label" id="fixturesAnchorA">League A</div>
+          <div class="embed-wrapper">
+            <iframe
+              id="fixturesA"
+              src="https://script.google.com/macros/s/AKfycbzsVHb1KQwwJNQpEJgoZjB_Vb-uKBP01iLEDELdUhPz_wYOxgV4u_nYXjdCZpVjdvU/exec"
+              height="3300"
+              scrolling="no"
+            ></iframe>
+          </div>
+        </div>
+        <div>
+          <div class="league-label" id="fixturesAnchorB">League B</div>
+          <div class="embed-wrapper">
+            <iframe
+              id="fixturesB"
+              src="https://script.google.com/macros/s/AKfycbzHh0VGEN-Sb0FwXNtB-mGg5qoCGpcZ2gaOIKJsiASezo5-oznw_5ibMBFs6HZOJn3WUA/exec"
+              height="3300"
+              scrolling="no"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- TEAMS -->
+  <div class="section-outer">
+    <section id="teams">
+      <div class="section-label">Clubs</div>
+      <div class="section-title">Teams &amp; Contacts</div>
+      <div class="embed-wrapper">
+        <iframe
+          id="teams-iframe"
+          src="https://script.google.com/macros/s/AKfycbxiWRglmXCgscEpriPYEMrEcJ4-VAgpAkVNdD3Iphj5JXa-pwkOVYLUykNO1FYEhYBGBQ/exec"
+          height="900"
+          scrolling="no"
+        ></iframe>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    West Wickham Phoenix Darts Summer League 2026
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+    function closeMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+
+    window.addEventListener('message', function(e) {
+      if (e.data && e.data.frameHeight) {
+        var iframes = document.querySelectorAll('iframe');
+        iframes.forEach(function(iframe) {
+          if (iframe.contentWindow === e.source) {
+            iframe.style.height = e.data.frameHeight + 'px';
+          }
+        });
+      }
+    });
+
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 80) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
