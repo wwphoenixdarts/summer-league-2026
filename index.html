@@ -290,13 +290,16 @@
       text-transform: uppercase;
     }
 
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .hero { padding: 90px 16px 48px; }
-      section { padding: 48px 16px; }
-      .two-col { grid-template-columns: 1fr; }
-    }
+ @media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero { padding: 90px 16px 48px; }
+  section { padding: 48px 16px; }
+  .two-col { grid-template-columns: 1fr; }
+  .fixtures-frame { height: 5500px; }
+}
+
+.fixtures-frame { height: 3500px; }
   </style>
 </head>
 <body>
@@ -408,7 +411,7 @@
             <iframe
               id="fixturesA"
               src="https://script.google.com/macros/s/AKfycbzsVHb1KQwwJNQpEJgoZjB_Vb-uKBP01iLEDELdUhPz_wYOxgV4u_nYXjdCZpVjdvU/exec"
-              height="3800"
+              class="fixtures-frame"
               scrolling="no"
             ></iframe>
           </div>
@@ -419,7 +422,7 @@
             <iframe
               id="fixturesB"
               src="https://script.google.com/macros/s/AKfycbzHh0VGEN-Sb0FwXNtB-mGg5qoCGpcZ2gaOIKJsiASezo5-oznw_5ibMBFs6HZOJn3WUA/exec"
-              height="3800"
+              class="fixtures-frame"
               scrolling="no"
             ></iframe>
           </div>
