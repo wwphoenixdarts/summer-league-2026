@@ -157,9 +157,7 @@
       letter-spacing: 1px;
     }
 
-    .section-outer {
-      border-bottom: 1px solid var(--border);
-    }
+    .section-outer { border-bottom: 1px solid var(--border); }
 
     section {
       padding: 64px 24px;
@@ -218,6 +216,112 @@
       display: block;
     }
 
+    /* FIXTURES NATIVE STYLES */
+    .fixtures-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+    }
+
+    .fixtures-loading {
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .date-header {
+      color: #ffffff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 16px 0 8px 0;
+      border-top: 1px solid #424242;
+      margin-top: 16px;
+    }
+
+    .date-header:first-child {
+      border-top: none;
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    .fixtures-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      margin-bottom: 8px;
+    }
+
+    .fixtures-table th {
+      background-color: #2e2e2e;
+      color: #9e9e9e;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 2px;
+      padding: 10px 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+
+    .fixtures-table td {
+      padding: 12px 16px;
+      font-size: 14px;
+      border-bottom: 1px solid #2e2e2e;
+      color: #ffffff;
+    }
+
+    .fixtures-table th.score,
+    .fixtures-table td.score {
+      width: 20%;
+      text-align: center;
+      white-space: nowrap;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .fixtures-table th.home,
+    .fixtures-table td.home {
+      width: 40%;
+      text-align: right;
+      padding-right: 12px;
+    }
+
+    .fixtures-table th.away,
+    .fixtures-table td.away {
+      width: 40%;
+      text-align: left;
+      padding-left: 12px;
+    }
+
+    .fixtures-table tr.upcoming-row td { color: #9e9e9e; }
+    .fixtures-table tr.played td { color: #ffffff; }
+    .fixtures-table tr:hover td { background-color: #2e2e2e; }
+
+    .score-result {
+      font-weight: bold;
+      color: #ffffff;
+      font-size: 15px;
+    }
+
+    .score-vs {
+      color: #555555;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .score-pp {
+      color: #888888;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-style: italic;
+    }
+
+    /* UPDATES */
     .updates-grid { display: grid; gap: 16px; }
 
     .update-card {
@@ -290,13 +394,13 @@
       text-transform: uppercase;
     }
 
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .hero { padding: 90px 16px 48px; }
-  section { padding: 48px 16px; }
-  .two-col { grid-template-columns: 1fr; }
-}
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero { padding: 90px 16px 48px; }
+      section { padding: 48px 16px; }
+      .two-col { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -336,7 +440,7 @@
       <div class="section-title">Updates</div>
       <div class="updates-grid">
         <div class="update-card">
-          <div class="update-date">4 May 2026</div>
+          <div class="update-date">04 May 2026</div>
           <div class="update-title">Season Kicks Off 18th May 2026</div>
           <div class="update-body">The West Wickham Phoenix Darts Summer League 2026 gets underway on 18th May with 13 teams split across League A and League B. Good luck to all teams!</div>
         </div>
@@ -356,7 +460,7 @@
             <iframe
               id="tableA"
               src="https://script.google.com/macros/s/AKfycbw0aeQT3k6d6L3gkX-X4-TrJOu-WtTMDM39Q3Uhkz6R7RmziSjzAw0udMl-9Rq8xHU2MQ/exec"
-              height="360"
+              height="380"
               scrolling="no"
             ></iframe>
           </div>
@@ -367,7 +471,7 @@
             <iframe
               id="tableB"
               src="https://script.google.com/macros/s/AKfycbyfWPrNI06UTeooHhguMh1CmIDg56ANAyd-_vQm1tJVV8paGBjavVp7j5Wgn5Jt3j9VXw/exec"
-              height="360"
+              height="380"
               scrolling="no"
             ></iframe>
           </div>
@@ -404,24 +508,14 @@
       <div class="two-col">
         <div>
           <div class="league-label" id="fixturesAnchorA">League A</div>
-          <div class="embed-wrapper">
-            <iframe
-              id="fixturesA"
-              src="https://script.google.com/macros/s/AKfycbzsVHb1KQwwJNQpEJgoZjB_Vb-uKBP01iLEDELdUhPz_wYOxgV4u_nYXjdCZpVjdvU/exec"
-              height="3950"
-              scrolling="no"
-            ></iframe>
+          <div class="fixtures-container" id="fixturesA">
+            <div class="fixtures-loading">Loading fixtures...</div>
           </div>
         </div>
         <div>
           <div class="league-label" id="fixturesAnchorB">League B</div>
-          <div class="embed-wrapper">
-            <iframe
-              id="fixturesB"
-              src="https://script.google.com/macros/s/AKfycbzHh0VGEN-Sb0FwXNtB-mGg5qoCGpcZ2gaOIKJsiASezo5-oznw_5ibMBFs6HZOJn3WUA/exec"
-              height="3950"
-              scrolling="no"
-            ></iframe>
+          <div class="fixtures-container" id="fixturesB">
+            <div class="fixtures-loading">Loading fixtures...</div>
           </div>
         </div>
       </div>
@@ -437,7 +531,7 @@
         <iframe
           id="teams-iframe"
           src="https://script.google.com/macros/s/AKfycbxiWRglmXCgscEpriPYEMrEcJ4-VAgpAkVNdD3Iphj5JXa-pwkOVYLUykNO1FYEhYBGBQ/exec"
-          height="2240"
+          height="1000"
           scrolling="no"
         ></iframe>
       </div>
@@ -456,17 +550,128 @@
       document.getElementById('mobileMenu').classList.remove('open');
     }
 
-    window.addEventListener('message', function(e) {
-      if (e.data && e.data.frameHeight) {
-        var iframes = document.querySelectorAll('iframe');
-        iframes.forEach(function(iframe) {
-          if (iframe.contentWindow === e.source) {
-            iframe.style.height = e.data.frameHeight + 'px';
+    // Parse CSV text into array of arrays
+    function parseCSV(text) {
+      const lines = text.trim().split('\n');
+      return lines.map(line => {
+        const cols = [];
+        let current = '';
+        let inQuotes = false;
+        for (let i = 0; i < line.length; i++) {
+          if (line[i] === '"') {
+            inQuotes = !inQuotes;
+          } else if (line[i] === ',' && !inQuotes) {
+            cols.push(current.trim());
+            current = '';
+          } else {
+            current += line[i];
           }
+        }
+        cols.push(current.trim());
+        return cols;
+      });
+    }
+
+    // Format date from various formats
+    function formatDate(dateStr) {
+      if (!dateStr) return 'TBC';
+      const parts = dateStr.split('/');
+      if (parts.length === 3) {
+        const d = new Date(parts[2], parts[1] - 1, parts[0]);
+        return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).toUpperCase();
+      }
+      return dateStr.toUpperCase();
+    }
+
+    // Build fixtures HTML from CSV data
+    function buildFixtures(data) {
+      const grouped = {};
+      const dateOrder = [];
+
+      for (let i = 1; i < data.length; i++) {
+        const row = data[i];
+        if (!row[0] && !row[1]) continue;
+
+        const dateKey = formatDate(row[0]);
+        if (!grouped[dateKey]) {
+          grouped[dateKey] = [];
+          dateOrder.push(dateKey);
+        }
+
+        grouped[dateKey].push({
+          home: row[1] || '',
+          away: row[2] || '',
+          homeScore: row[3] || '',
+          awayScore: row[4] || '',
+          status: row[5] || ''
         });
       }
-    });
 
+      let html = '';
+      for (const date of dateOrder) {
+        html += '<div class="date-header">' + date + '</div>';
+        html += '<table class="fixtures-table"><thead><tr>';
+        html += '<th class="home">Home</th>';
+        html += '<th class="score">Score</th>';
+        html += '<th class="away">Away</th>';
+        html += '</tr></thead><tbody>';
+
+        for (const match of grouped[date]) {
+          const isPlayed = match.homeScore !== '' && match.awayScore !== '';
+          const isPostponed = match.status.toUpperCase() === 'PP';
+          let scoreDisplay;
+
+          if (isPostponed) {
+            scoreDisplay = '<span class="score-pp">PP</span>';
+          } else if (isPlayed) {
+            scoreDisplay = '<span class="score-result">' + match.homeScore + ' - ' + match.awayScore + '</span>';
+          } else {
+            scoreDisplay = '<span class="score-vs">vs</span>';
+          }
+
+          const rowClass = isPlayed ? 'played' : 'upcoming-row';
+          html += '<tr class="' + rowClass + '">';
+          html += '<td class="home">' + match.home + '</td>';
+          html += '<td class="score">' + scoreDisplay + '</td>';
+          html += '<td class="away">' + match.away + '</td>';
+          html += '</tr>';
+        }
+
+        html += '</tbody></table>';
+      }
+
+      return html;
+    }
+
+    // Fetch and render fixtures
+    function loadFixtures(url, containerId) {
+      const container = document.getElementById(containerId);
+      // Use a CORS proxy since Google Sheets CSV requires it from GitHub Pages
+      const proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(url);
+
+      fetch(proxyUrl)
+        .then(response => response.text())
+        .then(text => {
+          const data = parseCSV(text);
+          container.innerHTML = buildFixtures(data);
+        })
+        .catch(err => {
+          container.innerHTML = '<div class="fixtures-loading">Unable to load fixtures. Please try refreshing.</div>';
+        });
+    }
+
+    // Load both leagues
+    loadFixtures(
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ3kF53WR_340S4UWdFWJVm8UiDu4bimie7GycpkWheSoTnls268GRU4sLsylZY6oZmnRPDtHaCjby6/pub?gid=1219792393&single=true&output=csv',
+      'fixturesA'
+    );
+
+    loadFixtures(
+      'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ3kF53WR_340S4UWdFWJVm8UiDu4bimie7GycpkWheSoTnls268GRU4sLsylZY6oZmnRPDtHaCjby6/pub?gid=426853450&single=true&output=csv',
+      'fixturesB'
+    );
+
+    // Active nav highlight on scroll
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-links a');
 
